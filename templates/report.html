@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coordinate Geometry System - Documentation</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-mml-chtml.js"></script>
+    <style>
+        /* Main Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%);
+            color: white;
+            padding: 30px 0;
+            margin-bottom: 30px;
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        section {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #4b6cb7;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        h3 {
+            color: #182848;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        pre {
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            padding: 15px;
+            overflow-x: auto;
+            border-left: 4px solid #4b6cb7;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+            color: #d63384;
+        }
+
+        .formula {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+
+        .card {
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-header {
+            background-color: #4b6cb7;
+            color: white;
+            font-weight: 600;
+            border-radius: 8px 8px 0 0 !important;
+        }
+
+        .btn-primary {
+            background-color: #4b6cb7;
+            border-color: #4b6cb7;
+        }
+
+        .btn-primary:hover {
+            background-color: #3a5a9b;
+            border-color: #3a5a9b;
+        }
+
+        .btn-outline-primary {
+            color: #4b6cb7;
+            border-color: #4b6cb7;
+        }
+
+        .btn-outline-primary:hover {
+            background-color: #4b6cb7;
+            color: white;
+        }
+
+        /* Table Styles */
+        .table {
+            width: 100%;
+            margin-bottom: 1rem;
+            color: #212529;
+            border-collapse: collapse;
+        }
+
+        .table th,
+        .table td {
+            padding: 0.75rem;
+            vertical-align: top;
+            border-top: 1px solid #dee2e6;
+        }
+
+        .table thead th {
+            vertical-align: bottom;
+            border-bottom: 2px solid #dee2e6;
+            background-color: #f8f9fa;
+        }
+
+        .table tbody + tbody {
+            border-top: 2px solid #dee2e6;
+        }
+
+        /* Class Diagram */
+        .class-diagram {
+            width: 100%;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        .class-box {
+            border: 2px solid #4b6cb7;
+            border-radius: 5px;
+            margin: 10px;
+            display: inline-block;
+            width: 250px;
+            vertical-align: top;
+        }
+
+        .class-name {
+            background-color: #4b6cb7;
+            color: white;
+            padding: 8px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .class-attributes, .class-methods {
+            padding: 10px;
+            border-top: 1px solid #dee2e6;
+        }
+
+        .class-attributes p, .class-methods p {
+            margin: 5px 0;
+            font-size: 0.9rem;
+        }
+
+        /* Learn Mode */
+        .learn-card {
+            border-left: 4px solid #4b6cb7;
+            background-color: #f8f9fa;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+
+        .learn-card h4 {
+            color: #4b6cb7;
+            margin-bottom: 10px;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            header {
+                padding: 20px 0;
+            }
+            
+            header h1 {
+                font-size: 1.8rem;
+            }
+            
+            section {
+                padding: 15px;
+            }
+            
+            .class-box {
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background-color: white;
+            }
+            
+            header, .no-print {
+                display: none;
+            }
+            
+            section {
+                box-shadow: none;
+                margin-bottom: 20px;
+                page-break-inside: avoid;
+            }
+            
+            .container {
+                max-width: 100%;
+                padding: 0;
+            }
+        }
+
+        /* Footer */
+        footer {
+            background-color: #182848;
+            color: white;
+            padding: 20px 0;
+            margin-top: 30px;
+            border-radius: 10px 10px 0 0;
+        }
+
+        footer p {
+            margin-bottom: 0;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #4b6cb7;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3a5a9b;
+        }
+
+        /* Navigation */
+        .nav-pills .nav-link.active {
+            background-color: #4b6cb7;
+        }
+
+        .nav-pills .nav-link {
+            color: #4b6cb7;
+        }
+
+        /* Back to top button */
+        #back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: none;
+            background-color: #4b6cb7;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            cursor: pointer;
+            z-index: 99;
+            transition: background-color 0.3s;
+        }
+
+        #back-to-top:hover {
+            background-color: #3a5a9b;
+        }
+    </style>
+</head>
+<body>
+    <button id="back-to-top" title="Back to top"><i class="fas fa-arrow-up"></i></button>
+
+    <header>
+        <div class="container text-center">
+            <h1>Coordinate Geometry System</h1>
+            <p>Comprehensive Documentation and Project Report</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 mb-4">
+                <div class="sticky-top pt-3" style="top: 20px;">
+                    <div class="card">
+                        <div class="card-header">
+                            Table of Contents
+                        </div>
+                        <div class="card-body">
+                            <nav class="nav flex-column nav-pills">
+                                <a class="nav-link active" href="#overview">Project Overview</a>
+                                <a class="nav-link" href="#class-structure">Backend Class Structure</a>
+                                <a class="nav-link" href="#formulas">Formulas Used</a>
+                                <a class="nav-link" href="#add-features">Adding New Features</a>
+                                <a class="nav-link" href="#error-handling">Error Handling Approach</a>
+                                <a class="nav-link" href="#learn-mode">Learn Mode</a>
+                                <a class="nav-link" href="#usage">Usage Guide</a>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <button id="exportPdfBtn" class="btn btn-primary w-100 mb-2">
+                            <i class="fas fa-file-pdf me-2"></i> Export to PDF
+                        </button>
+                        <a href="/" class="btn btn-outline-primary w-100">
+                            <i class="fas fa-arrow-left me-2"></i> Back to Application
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-9">
+                <section id="overview">
+                    <h2>Project Overview</h2>
+                    <p>The Coordinate Geometry System is a comprehensive web-based application designed to perform various coordinate geometry operations and visualize the results dynamically on a graph. The system is built using Python with Object-Oriented Programming (OOP) principles for the backend logic and HTML/CSS/JavaScript for the frontend interface.</p>
+                    
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-header">
+                                    Backend Features
+                                </div>
+                                <div class="card-body">
+                                    <ul>
+                                        <li>Object-oriented architecture with reusable classes</li>
+                                        <li>Comprehensive geometry operations</li>
+                                        <li>Custom exceptions for precise error handling</li>
+                                        <li>Flask API for frontend communication</li>
+                                        <li>Extensible design for adding new features</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-header">
+                                    Frontend Features
+                                </div>
+                                <div class="card-body">
+                                    <ul>
+                                        <li>Clean, responsive user interface</li>
+                                        <li>Dynamic form generation based on operation</li>
+                                        <li>Interactive graph visualization using Plotly.js</li>
+                                        <li>"Learn Mode" for formula explanations</li>
+                                        <li>Export capabilities (graph image, PDF report)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="mt-4">Project Architecture</h3>
+                    <p>The system follows a client-server architecture:</p>
+                    <div class="class-diagram">
+                        <pre>
+┌─────────────────┐     HTTP Requests     ┌─────────────────┐
+│                 │ ──────────────────>   │                 │
+│    Frontend     │                       │     Backend     │
+│  (HTML/JS/CSS)  │ <──────────────────   │  (Python/Flask) │
+│                 │     JSON Responses    │                 │
+└─────────────────┘                       └─────────────────┘
+        │                                         │
+        │                                         │
+        ▼                                         ▼
+┌─────────────────┐                      ┌─────────────────┐
+│   User Interface│                      │  Geometry Engine│
+│ - Input Forms   │                      │ - Point         │
+│ - Graph Display │                      │ - Line          │
+│ - Results View  │                      │ - Circle        │
+└─────────────────┘                      │ - Triangle      │
+                                         │ - Polygon       │
+                                         │ - Transformations│
+                                         └─────────────────┘
+                        </pre>
+                    </div>
+                </section>
+
+                <section id="class-structure">
+                    <h2>Backend Class Structure</h2>
+                    <p>The backend is built using Object-Oriented Programming principles with a hierarchy of classes that handle different geometric entities and operations.</p>
+
+                    <h3>Core Classes</h3>
+                    <div class="class-diagram">
+                        <div class="class-box">
+                            <div class="class-name">Point</div>
+                            <div class="class-attributes">
+                                <p><strong>Attributes:</strong></p>
+                                <p>- x: float</p>
+                                <p>- y: float</p>
+                            </div>
+                            <div class="class-methods">
+                                <p><strong>Methods:</strong></p>
+                                <p>- distance_to()</p>
+                                <p>- midpoint()</p>
+                                <p>- section_formula()</p>
+                            </div>
+                        </div>
+
+                        <div class="class-box">
+                            <div class="class-name">Line</div>
+                            <div class="class-attributes">
+                                <p><strong>Attributes:</strong></p>
+                                <p>- point1: Point</p>
+                                <p>- point2: Point</p>
+                                <p>- a, b, c: float</p>
+                            </div>
+                            <div class="class-methods">
+                                <p><strong>Methods:</strong></p>
+                                <p>- slope()</p>
+                                <p>- equation()</p>
+                                <p>- is_parallel()</p>
+                                <p>- is_perpendicular()</p>
+                                <p>- angle_with()</p>
+                                <p>- intersection_with()</p>
+                            </div>
+                        </div>
+
+                        <div class="class-box">
+                            <div class="class-name">Circle</div>
+                            <div class="class-attributes">
+                                <p><strong>Attributes:</strong></p>
+                                <p>- center: Point</p>
+                                <p>- radius: float</p>
+                            </div>
+                            <div class="class-methods">
+                                <p><strong>Methods:</strong></p>
+                                <p>- equation()</p>
+                                <p>- area()</p>
+                                <p>- circumference()</p>
+                                <p>- contains_point()</p>
+                                <p>- tangent_lines()</p>
+                                <p>- intersection_with_line()</p>
+                                <p>- intersection_with_circle()</p>
+                            </div>
+                        </div>
+
+                        <div class="class-box">
+                            <div class="class-name">Triangle</div>
+                            <div class="class-attributes">
+                                <p><strong>Attributes:</strong></p>
+                                <p>- p1, p2, p3: Point</p>
+                                <p>- sides: List[Line]</p>
+                            </div>
+                            <div class="class-methods">
+                                <p><strong>Methods:</strong></p>
+                                <p>- area()</p>
+                                <p>- perimeter()</p>
+                                <p>- centroid()</p>
+                                <p>- orthocenter()</p>
+                                <p>- circumcenter()</p>
+                                <p>- incenter()</p>
+                                <p>- circumcircle()</p>
+                                <p>- incircle()</p>
+                            </div>
+                        </div>
+
+                        <div class="class-box">
+                            <div class="class-name">Polygon</div>
+                            <div class="class-attributes">
+                                <p><strong>Attributes:</strong></p>
+                                <p>- points: List[Point]</p>
+                                <p>- sides: List[Line]</p>
+                            </div>
+                            <div class="class-methods">
+                                <p><strong>Methods:</strong></p>
+                                <p>- area()</p>
+                                <p>- perimeter()</p>
+                                <p>- centroid()</p>
+                                <p>- is_convex()</p>
+                                <p>- contains_point()</p>
+                            </div>
+                        </div>
+
+                        <div class="class-box">
+                            <div class="class-name">Transformations</div>
+                            <div class="class-attributes">
+                                <p><strong>Attributes:</strong></p>
+                                <p>- (Static class)</p>
+                            </div>
+                            <div class="class-methods">
+                                <p><strong>Methods:</strong></p>
+                                <p>- translate()</p>
+                                <p>- translate_shape()</p>
+                                <p>- rotate()</p>
+                                <p>- rotate_shape()</p>
+                                <p>- reflect_over_x()</p>
+                                <p>- reflect_over_y()</p>
+                                <p>- reflect_over_line()</p>
+                                <p>- reflect_shape()</p>
+                                <p>- scale()</p>
+                                <p>- scale_shape()</p>
+                            </div>
+                        </div>
+
+                        <div class="class-box">
+                            <div class="class-name">GeometryEngine</div>
+                            <div class="class-attributes">
+                                <p><strong>Attributes:</strong></p>
+                                <p>- (Static class)</p>
+                            </div>
+                            <div class="class-methods">
+                                <p><strong>Methods:</strong></p>
+                                <p>- are_collinear()</p>
+                                <p>- distance_point_to_line()</p>
+                                <p>- angle_between_lines()</p>
+                                <p>- is_point_inside_polygon()</p>
+                                <p>- convex_hull()</p>
+                                <p>- create_point()</p>
+                                <p>- create_line()</p>
+                                <p>- create_circle()</p>
+                                <p>- create_triangle()</p>
+                                <p>- create_polygon()</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>Exception Hierarchy</h3>
+                    <div class="class-diagram">
+                        <pre>
+                        GeometryError
+                            ├── PointError
+                            ├── LineError
+                            ├── CircleError
+                            ├── TriangleError
+                            └── PolygonError
+                        </pre>
+                    </div>
+
+                    <h3>Class Relationships</h3>
+                    <p>The classes are designed with clear relationships:</p>
+                    <ul>
+                        <li><strong>Composition:</strong> Complex shapes (Line, Circle, Triangle, Polygon) are composed of Points</li>
+                        <li><strong>Inheritance:</strong> All custom exceptions inherit from GeometryError</li>
+                        <li><strong>Utility Classes:</strong> Transformations and GeometryEngine provide utility methods that operate on the geometric entities</li>
+                    </ul>
+                </section>
+
+                <section id="formulas">
+                    <h2>Formulas Used</h2>
+                    <p>The system implements various coordinate geometry formulas. Here are the key formulas used in each class:</p>
+
+                    <div class="accordion" id="formulasAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingPoint">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePoint" aria-expanded="true" aria-controls="collapsePoint">
+                                    Point Formulas
+                                </button>
+                            </h2>
+                            <div id="collapsePoint" class="accordion-collapse collapse show" aria-labelledby="headingPoint" data-bs-parent="#formulasAccordion">
+                                <div class="accordion-body">
+                                    <div class="learn-card">
+                                        <h4>Distance Formula</h4>
+                                        <div class="formula">
+                                            \[ d = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} \]
+                                        </div>
+                                        <p>The distance between two points $(x_1, y_1)$ and $(x_2, y_2)$ is calculated using the Pythagorean theorem.</p>
+                                    </div>
+
+                                    <div class="learn-card">
+                                        <h4>Midpoint Formula</h4>
+                                        <div class="formula">
+                                            \[ M = \left(\frac{x_1 + x_2}{2}, \frac{y_1 + y_2}{2}\right) \]
+                                        </div>
+                                        <p>The midpoint between two points is calculated by taking the average of their x-coordinates and the average of their y-coordinates.</p>
+                                    </div>
+
+                                    <div class="learn-card">
+                                        <h4>Section Formula</h4>
+                                        <div class="formula">
+                                            \[ P = \left(\frac{mx_2 + nx_1}{m + n}, \frac{my_2 + ny_1}{m + n}\right) \]
+                                        </div>
+                                        <p>The section formula divides a line segment in a given ratio $m:n$. The point $P$ divides the line segment joining points $(x_1, y_1)$ and $(x_2, y_2)$ internally in the ratio $m:n$.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingLine">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLine" aria-expanded="false" aria-controls="collapseLine">
+                                    Line Formulas
+                                </button>
+                            </h2>
+                            <div id="collapseLine" class="accordion-collapse collapse" aria-labelledby="headingLine" data-bs-parent="#formulasAccordion">
+                                <div class="accordion-body">
+                                    <div class="learn-card">
+                                        <h4>Line Equation (Standard Form)</h4>
+                                        <div class="formula">
+                                            \[ ax + by + c = 0 \]
+                                        </div>
+                                        <p>Where $a$, $b$, and $c$ are constants. For a line passing through points $(x_1, y_1)$ and $(x_2, y_2)$:</p>
+                                        <div class="formula">
+                                            \[ a = y_2 - y_1 \]
+                                            \[ b = x_1 - x_2 \]
+                                            \[ c = x_2y_1 - x_1y_2 \]
+                                        </div>
+                                    </div>
+
+                                    <div class="learn-card">
+                                        <h4>Slope of a Line</h4>
+                                        <div class="formula">
+                                            \[ m = \frac{y_2 - y_1}{x_2 - x_1} \]
+                                        </div>
+                                        <p>The slope measures the steepness of a line. It is calculated as the ratio of the vertical change (rise) to the horizontal change (run) between two points on the line.</p>
+                                    </div>
+
+                                    <div class="learn-card">
+                                        <h4>Parallel Lines</h4>
+                                        <div class="formula">
+                                            \[ m_1 = m_2 \]
+                                        </div>
+                                        <p>Two lines are parallel if they have the same slope.</p>
+                                    </div>
+
+                                    <div class="learn-card">
+                                        <h4>Perpendicular Lines</h4>
+                                        <div class="formula">
+                                            \[ m_1 \cdot m_2 = -1 \]
+                                        </div>
+                                        <p>Two lines are perpendicular if the product of their slopes is -1 (i.e., their slopes are negative reciprocals of each other).</p>
+                                    </div>
+
+                                    <div class="learn-card">
+                                        <h4>Angle Between Two Lines</h4>
+                                        <div class="formula">
+                                            \[ \tan \theta = \left|\frac{m_2 - m_1}{1 + m_1m_2}\right| \]
+                                        </div>
+                                        <p>This formula calculates the angle between two lines with slopes $m_1$ and $m_2$.</p>
+                                    </div>
+
+                                    <div class="learn-card">
+                                        <h4>Intersection of Two Lines</h4>
+                                        <div class="formula">
+                                            \[ x = \frac{b_1c_2 - b_2c_1}{a_1b_2 - a_2b_1} \]
+                                            \[ y = \frac{a_2c_1 - a_1c_2}{a_1b_2 - a_2b_1} \]
+                                        </div>
+                                        <p>For two lines $a_1x + b_1y + c_1 = 0$ and $a_2x + b_2y + c_2 = 0$, these formulas find the coordinates of their intersection point.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingCircle">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCircle" aria-expanded="false" aria-controls="collapseCircle">
+                                    Circle Formulas
+                                </button>
+                            </h2>
+                            <div id="collapseCircle" class="accordion-collapse collapse" aria-labelledby="headingCircle" data-bs-parent="#formulasAccordion">
+                                <div class="accordion-body">
+                                    <div class="learn-card">
+                                        <h4>Circle Equation</h4>
+                                        <div class="formula">
+                                            \[ (x - h)^2 + (y - k)^2 = r^2 \]
+                                        </div>
+                                        <p>The equation of a circle with center $(h, k)$ and radius $r$.</p>
+                                    </div>
+
+                                    <div class="learn-card">
+                                        <h4>Circle Area</h4>
+                                        <div class="formula">
+                                            \[ A = \pi r^2 \]
+                                        </div>
+                                        <p>The area of a circle with radius $r$.</p>
+                                    </div>
+
+                                    <div class="learn-card">
+                                        <h4>Circle Circumference</h4>
+                                        <div class="formula">
+                                            \[ C = 2\pi r \]
+                                        </div>
+                                        <p>The circumference (perimeter) of a circle with radius $r$.</p>
+                                    </div>
+
+                                    <div class="learn-card">
+                                        <h4>Point Inside Circle</h4>
+                                        <div class="formula">
+                                            \[ (x - h)^2 + (y - k)^2 \leq r^2 \]
+                                        </div>
+                                        <p>A point $(x, y)$ is inside or on a circle with center $(h, k)$ and radius $r$ if this inequality is satisfied.</p>
+                                    </div>
+
+                                    <div class="learn-card">
+                                        <h4>Circle-Line Intersection</h4>
+                                        <p>To find the intersection of a circle and a line:</p>
+                                        <ol>
+                                            <li>Substitute the line equation into the circle equation</li>
+                                            <li>Solve the resulting quadratic equation</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTriangle">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTriangle" aria-expanded="false" aria-controls="collapseTriangle">
+                                    Triangle Formulas
+                                </button>
+                            </h2>
+                            <div id="collapseTriangle" class="accordion-collapse collapse" aria-labelledby="headingTriangle" data-bs-parent="#formulasAccordion">
+                                <div class="accordion-body">
+                                    <div class="learn-card">
+                                        <h4>Triangle Area</h4>
+                                        <div class="formula">
+                                            \[ A = \frac{1}{2}|x_1(y_2 - y_3) + x_2(y_3 - y_1) + x_3(y_1 - y_2)| \]
+                                        </div>
+                                        <p>The area of a triangle with vertices $(x_1, y_1)$, $(x_2, y_2)$, and $(x_3, y_3)$ using the cross product method.</p>
+                                    </div>
+
+                                    <div class="learn-card">
+                                        <h4>Triangle Centroid</h4>
+                                        <div class="formula">
+                                            \[ G = \left(\frac{x_1 + x_2 + x_3}{3}, \frac{y_1 + y_2 + y_3}{3}\right) \]
+                                        </div>
+                                        <p>The centroid of a triangle is the point where the three medians intersect. It is calculated as the average of the three vertices.</p>
+                                    </div>
+
+                                    <div class="learn-card">
+                                        <h4>Triangle Orthocenter</h4>
+                                        <p>The orthocenter is the point where the three altitudes of the triangle intersect. An altitude is a line from a vertex perpendicular to the opposite side.</p>
+                                    </div>
+
+                                    <div class="learn-card">
+                                        <h4>Triangle Circumcenter</h4>
+                                        <p>The circumcenter is the center of the circle that passes through all three vertices of the triangle. It is located at the intersection of the perpendicular bisectors of the three sides.</p>
+                                    </div>
+
+                                    <div class="learn-card">
+                                        <h4>Triangle Incenter</h4>
+                                        <div class="formula">
+                                            \[ I = \left(\frac{ax_1 + bx_2 + cx_3}{a + b + c}, \frac{ay_1 + by_2 + cy_3}{a + b + c}\right) \]
+                                        </div>
+                                        <p>Where $a$, $b$, and $c$ are the lengths of the sides opposite to the vertices. The incenter is the center of the inscribed circle of the triangle.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingPolygon">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePolygon" aria-expanded="false" aria-controls="collapsePolygon">
+                                    Polygon Formulas
+                                </button>
+                            </h2>
+                            <div id="collapsePolygon" class="accordion-collapse collapse" aria-labelledby="headingPolygon" data-bs-parent="#formulasAccordion">
+                                <div class="accordion-body">
+                                    <div class="learn-card">
+                                        <h4>Polygon Area (Shoelace Formula)</h4>
+                                        <div class="formula">
+                                            \[ A = \frac{1}{2}\left|\sum_{i=1}^{n} x_i(y_{i+1} - y_{i-1})\right| \]
+                                        </div>
+                                        <p>The Shoelace formula (also known as the surveyor's formula) calculates the area of a polygon given the coordinates of its vertices.</p>
+                                    </div>
+
+                                    <div class="learn-card">
+                                        <h4>Polygon Perimeter</h4>
+                                        <div class="formula">
+                                            \[ P = \sum_{i=1}^{n} \sqrt{(x_{i+1} - x_i)^2 + (y_{i+1} - y_i)^2} \]
+                                        </div>
+                                        <p>The perimeter of a polygon is the sum of the lengths of all its sides.</p>
+                                    </div>
+
+                                    <div class="learn-card">
+                                        <h4>Polygon Centroid</h4>
+                                        <p>For a simple polygon, the centroid can be calculated as a weighted average of the centroids of a set of triangles.</p>
+                                    </div>
+
+                                    <div class="learn-card">
+                                        <h4>Convexity Check</h4>
+                                        <p>A polygon is convex if all its interior angles are less than 180 degrees. This can be checked by ensuring that all cross products of consecutive edges have the same sign.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTransform">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTransform" aria-expanded="false" aria-controls="collapseTransform">
+                                    Transformation Formulas
+                                </button>
+                            </h2>
+                            <div id="collapseTransform" class="accordion-collapse collapse" aria-labelledby="headingTransform" data-bs-parent="#formulasAccordion">
+                                <div class="accordion-body">
+                                    <div class="learn-card">
+                                        <h4>Translation</h4>
+                                        <div class="formula">
+                                            \[ (x, y) \rightarrow (x + dx, y + dy) \]
+                                        </div>
+                                        <p>Translation moves a point by adding displacement values to its coordinates.</p>
+                                    </div>
+
+                                    <div class="learn-card">
+                                        <h4>Rotation</h4>
+                                        <div class="formula">
+                                            \[ \begin{pmatrix} x' \\ y' \end{pmatrix} = \begin{pmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{pmatrix} \begin{pmatrix} x - x_c \\ y - y_c \end{pmatrix} + \begin{pmatrix} x_c \\ y_c \end{pmatrix} \]
+                                        </div>
+                                        <p>Rotation of a point $(x, y)$ around a center $(x_c, y_c)$ by angle $\theta$.</p>
+                                    </div>
+
+                                    <div class="learn-card">
+                                        <h4>Reflection</h4>
+                                        <p>Reflection over the x-axis: $(x, y) \rightarrow (x, -y)$</p>
+                                        <p>Reflection over the y-axis: $(x, y) \rightarrow (-x, y)$</p>
+                                        <p>Reflection over a line requires finding the perpendicular distance to the line and reflecting the point across it.</p>
+                                    </div>
+
+                                    <div class="learn-card">
+                                        <h4>Scaling</h4>
+                                        <div class="formula">
+                                            \[ (x, y) \rightarrow (x_c + s_x(x - x_c), y_c + s_y(y - y_c)) \]
+                                        </div>
+                                        <p>Scaling a point $(x, y)$ from a center $(x_c, y_c)$ by factors $s_x$ and $s_y$ in the x and y directions, respectively.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="add-features">
+                    <h2>Adding New Features</h2>
+                    <p>The system is designed to be modular and extensible, making it easy to add new features. Here's how you can extend the system:</p>
+
+                    <h3>Adding a New Geometric Shape</h3>
+                    <ol>
+                        <li>Create a new class in <code>geometry/models.py</code></li>
+                        <li>Implement the required methods and properties</li>
+                        <li>Add appropriate error handling with custom exceptions</li>
+                        <li>Add the class to the GeometryEngine if needed</li>
+                    </ol>
+
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            Example: Adding an Ellipse Class
+                        </div>
+                        <div class="card-body">
+                            <pre>
+class Ellipse:
+    def __init__(self, center: Point, a: float, b: float, angle: float = 0):
+        if a <= 0 or b <= 0:
+            raise GeometryError("Semi-major and semi-minor axes must be positive")
+        self.center = center
+        self.a = float(a)  # Semi-major axis
+        self.b = float(b)  # Semi-minor axis
+        self.angle = float(angle)  # Rotation angle in degrees
+    
+    def area(self) -> float:
+        """Calculate area of the ellipse"""
+        try:
+            return math.pi * self.a * self.b
+        except Exception as e:
+            raise GeometryError(f"Error calculating area: {str(e)}")
+    
+    # Add more methods as needed
+</pre>
+                        </div>
+                    </div>
+
+                    <h3>Adding a New Operation</h3>
+                    <ol>
+                        <li>Add the method to the appropriate class in <code>geometry/models.py</code></li>
+                        <li>Create a new API endpoint in <code>app.py</code></li>
+                        <li>Add the operation to the frontend in <code>static/js/app.js</code></li>
+                        <li>Implement the visualization in the appropriate function</li>
+                    </ol>
+
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            Example: Adding a New API Endpoint
+                        </div>
+                        <div class="card-body">
+                            <pre>
+@app.route('/api/ellipse/area', methods=['POST'])
+def ellipse_area():
+    try:
+        data = request.json
+        center = Point(data['center']['x'], data['center']['y'])
+        a = float(data['a'])
+        b = float(data['b'])
+        angle = float(data.get('angle', 0))
+        
+        ellipse = Ellipse(center, a, b, angle)
+        area = ellipse.area()
+        
+        return jsonify({
+            'success': True,
+            'result': {
+                'area': area,
+                'ellipse': {
+                    'center': center.to_dict(),
+                    'a': a,
+                    'b': b,
+                    'angle': angle
+                }
+            }
+        })
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'error': str(e),
+            'traceback': traceback.format_exc()
+        }), 400
+</pre>
+                        </div>
+                    </div>
+
+                    <h3>Adding to the Frontend</h3>
+                    <ol>
+                        <li>Add the new operation to the <code>operations</code> object in <code>app.js</code></li>
+                        <li>Create a display function for the results</li>
+                        <li>Implement the visualization in the graph</li>
+                    </ol>
+
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            Example: Adding a New Operation to the Frontend
+                        </div>
+                        <div class="card-body">
+                            <pre>
+ellipse: {
+    area: { 
+        name: 'Ellipse Area',
+        fields: [
+            { type: 'point', id: 'center', label: 'Center' },
+            { type: 'number', id: 'a', label: 'Semi-major Axis', min: 0, step: 'any' },
+            { type: 'number', id: 'b', label: 'Semi-minor Axis', min: 0, step: 'any' },
+            { type: 'number', id: 'angle', label: 'Rotation Angle (degrees)', step: 'any' }
+        ],
+        endpoint: '/api/ellipse/area',
+        formula: 'Area = πab',
+        explanation: 'The area of an ellipse is calculated as π times the product of the semi-major axis (a) and the semi-minor axis (b).'
+    }
+}
+</pre>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="error-handling">
+                    <h2>Error Handling Approach</h2>
+                    <p>The system implements a comprehensive error handling strategy to ensure that errors can be localized and debugged effectively.</p>
+
+                    <h3>Custom Exception Hierarchy</h3>
+                    <p>A hierarchy of custom exceptions is used to provide specific error information:</p>
+                    <ul>
+                        <li><code>GeometryError</code>: Base exception for all geometry errors</li>
+                        <li><code>PointError</code>: Specific to point-related errors</li>
+                        <li><code>LineError</code>: Specific to line-related errors</li>
+                        <li><code>CircleError</code>: Specific to circle-related errors</li>
+                        <li><code>TriangleError</code>: Specific to triangle-related errors</li>
+                        <li><code>PolygonError</code>: Specific to polygon-related errors</li>
+                    </ul>
+
+                    <h3>Backend Error Handling</h3>
+                    <p>Each method in the backend classes includes try-except blocks to catch and handle errors:</p>
+                    <pre>
+def area(self) -> float:
+    """Calculate area of the circle"""
+    try:
+        return math.pi * self.radius ** 2
+    except Exception as e:
+        raise CircleError(f"Error calculating area: {str(e)}")
+</pre>
+
+                    <h3>API Error Handling</h3>
+                    <p>The Flask API routes catch exceptions and return appropriate error responses:</p>
+                    <pre>
+@app.route('/api/circle/area', methods=['POST'])
+def circle_area():
+    try:
+        # Process request and perform calculation
+        return jsonify({
+            'success': True,
+            'result': {
+                'area': area,
+                'circle': circle.to_dict()
+            }
+        })
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'error': str(e),
+            'traceback': traceback.format_exc()
+        }), 400
+</pre>
+
+                    <h3>Frontend Error Handling</h3>
+                    <p>The frontend displays error messages to the user and provides detailed information for debugging:</p>
+                    <pre>
+function showError(message) {
+    errorModalBody.textContent = message;
+    errorModal.show();
+}
+
+// In the fetch request
+.catch(error => {
+    showError('Network error: ' + error.message);
+});
+</pre>
+
+                    <h3>Benefits of This Approach</h3>
+                    <ul>
+                        <li><strong>Localized Debugging</strong>: Errors can be traced to specific classes and methods</li>
+                        <li><strong>Informative Messages</strong>: Error messages provide context about what went wrong</li>
+                        <li><strong>Graceful Degradation</strong>: The system continues to function even when errors occur</li>
+                        <li><strong>User Feedback</strong>: Users are informed about errors in a user-friendly way</li>
+                    </ul>
+                </section>
+
+                <section id="learn-mode">
+                    <h2>Learn Mode</h2>
+                    <p>The system includes a "Learn Mode" feature that provides explanations of the formulas and concepts used in coordinate geometry.</p>
+
+                    <h3>How Learn Mode Works</h3>
+                    <p>When Learn Mode is enabled, the system displays:</p>
+                    <ul>
+                        <li>The mathematical formula used for the current operation</li>
+                        <li>A detailed explanation of the formula and its application</li>
+                        <li>Visual aids to help understand the concept</li>
+                    </ul>
+
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            Example: Distance Formula Explanation
+                        </div>
+                        <div class="card-body">
+                            <div class="learn-card">
+                                <h4>Distance Formula</h4>
+                                <div class="formula">
+                                    \[ d = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} \]
+                                </div>
+                                <p>The distance between two points $(x_1, y_1)$ and $(x_2, y_2)$ is calculated using the Pythagorean theorem.</p>
+                                <p>This formula works by:</p>
+                                <ol>
+                                    <li>Finding the horizontal distance: $(x_2 - x_1)$</li>
+                                    <li>Finding the vertical distance: $(y_2 - y_1)$</li>
+                                    <li>Squaring both distances</li>
+                                    <li>Adding the squares</li>
+                                    <li>Taking the square root of the sum</li>
+                                </ol>
+                                <p>This is an application of the Pythagorean theorem, which states that in a right triangle, the square of the length of the hypotenuse equals the sum of the squares of the lengths of the other two sides.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>Enabling Learn Mode</h3>
+                    <p>To enable Learn Mode:</p>
+                    <ol>
+                        <li>Toggle the "Enable Learn Mode" switch in the left panel</li>
+                        <li>The formula explanation will appear below the toggle</li>
+                        <li>As you select different operations, the explanations will update automatically</li>
+                    </ol>
+
+                    <p>Learn Mode is particularly useful for educational purposes, allowing users to understand the mathematical principles behind the coordinate geometry operations.</p>
+                </section>
+
+                <section id="usage">
+                    <h2>Usage Guide</h2>
+                    <p>This section provides a step-by-step guide on how to use the Coordinate Geometry System.</p>
+
+                    <h3>Basic Usage</h3>
+                    <ol>
+                        <li><strong>Select Shape/Operation</strong>: Choose from Point, Line, Circle, Triangle, Polygon, or Transformations.</li>
+                        <li><strong>Select Operation</strong>: Based on the shape you selected, choose a specific operation (e.g., distance, area, intersection).</li>
+                        <li><strong>Input Coordinates</strong>: Enter the required coordinates or values for the operation.</li>
+                        <li><strong>Calculate</strong>: Click the "Calculate" button to perform the operation.</li>
+                        <li><strong>View Results</strong>: Results will be displayed both textually and graphically.</li>
+                    </ol>
+
+                    <h3>Advanced Features</h3>
+                    <ul>
+                        <li><strong>Learn Mode</strong>: Toggle "Learn Mode" to see explanations of the formulas used.</li>
+                        <li><strong>Download Graph</strong>: Click "Download Graph" to save the graph as an image.</li>
+                        <li><strong>Export to PDF</strong>: Click "Export Results to PDF" to save the results as a PDF document.</li>
+                        <li><strong>Clear</strong>: Click "Clear" to reset the form and start a new calculation.</li>
+                    </ul>
+
+                    <h3>Example Operations</h3>
+                    <div class="accordion" id="examplesAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingExample1">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1">
+                                    Example 1: Calculate Distance Between Points
+                                </button>
+                            </h2>
+                            <div id="collapseExample1" class="accordion-collapse collapse" aria-labelledby="headingExample1" data-bs-parent="#examplesAccordion">
+                                <div class="accordion-body">
+                                    <ol>
+                                        <li>Select "Point" from the Shape dropdown</li>
+                                        <li>Select "Distance between Points" from the Operation dropdown</li>
+                                        <li>Enter coordinates for Point 1 (e.g., X: 1, Y: 2)</li>
+                                        <li>Enter coordinates for Point 2 (e.g., X: 4, Y: 6)</li>
+                                        <li>Click "Calculate"</li>
+                                        <li>View the result: The distance is 5</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingExample2">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">
+                                    Example 2: Calculate Circle Area
+                                </button>
+                            </h2>
+                            <div id="collapseExample2" class="accordion-collapse collapse" aria-labelledby="headingExample2" data-bs-parent="#examplesAccordion">
+                                <div class="accordion-body">
+                                    <ol>
+                                        <li>Select "Circle" from the Shape dropdown</li>
+                                        <li>Select "Circle Area" from the Operation dropdown</li>
+                                        <li>Enter coordinates for the Center (e.g., X: 0, Y: 0)</li>
+                                        <li>Enter the Radius (e.g., 5)</li>
+                                        <li>Click "Calculate"</li>
+                                        <li>View the result: The area is approximately 78.54 square units</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingExample3">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample3">
+                                    Example 3: Create a Polygon
+                                </button>
+                            </h2>
+                            <div id="collapseExample3" class="accordion-collapse collapse" aria-labelledby="headingExample3" data-bs-parent="#examplesAccordion">
+                                <div class="accordion-body">
+                                    <ol>
+                                        <li>Select "Polygon" from the Shape dropdown</li>
+                                        <li>Select "Create Polygon" from the Operation dropdown</li>
+                                        <li>Add points one by one:
+                                            <ul>
+                                                <li>Enter X: 0, Y: 0, click "Add Point"</li>
+                                                <li>Enter X: 4, Y: 0, click "Add Point"</li>
+                                                <li>Enter X: 4, Y: 3, click "Add Point"</li>
+                                                <li>Enter X: 0, Y: 3, click "Add Point"</li>
+                                            </ul>
+                                        </li>
+                                        <li>Click "Calculate"</li>
+                                        <li>View the result: A rectangle with area 12 and perimeter 14</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container text-center">
+            <p>&copy; 2023 Coordinate Geometry System</p>
+        </div>
+    </footer>
+
+    <script>
+        // Back to top button
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.style.display = 'block';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Active link highlighting
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('section');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // Export to PDF
+        document.getElementById('exportPdfBtn').addEventListener('click', function() {
+            // Show loading indicator
+            this.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i> Generating PDF...';
+            this.disabled = true;
+            
+            // Use setTimeout to allow the UI to update
+            setTimeout(() => {
+                const { jsPDF } = window.jspdf;
+                
+                // Create a new PDF document
+                const doc = new jsPDF('p', 'mm', 'a4');
+                const pageWidth = doc.internal.pageSize.getWidth();
+                const pageHeight = doc.internal.pageSize.getHeight();
+                
+                // Add title
+                doc.setFontSize(20);
+                doc.text('Coordinate Geometry System', pageWidth / 2, 20, { align: 'center' });
+                doc.setFontSize(14);
+                doc.text('Documentation and Project Report', pageWidth / 2, 30, { align: 'center' });
+                
+                // Add content sections
+                doc.setFontSize(16);
+                doc.text('Project Overview', 20, 50);
+                doc.setFontSize(12);
+                doc.text('The Coordinate Geometry System is a comprehensive web-based application', 20, 60);
+                doc.text('designed to perform various coordinate geometry operations and visualize', 20, 67);
+                doc.text('the results dynamically on a graph.', 20, 74);
+                
+                // Add more sections
+                doc.setFontSize(16);
+                doc.text('Backend Class Structure', 20, 90);
+                doc.setFontSize(12);
+                doc.text('The backend is built using Object-Oriented Programming principles with', 20, 100);
+                doc.text('a hierarchy of classes that handle different geometric entities and operations.', 20, 107);
+                
+                // Add a new page
+                doc.addPage();
+                
+                // Add formulas section
+                doc.setFontSize(16);
+                doc.text('Key Formulas', 20, 20);
+                doc.setFontSize(12);
+                doc.text('Distance Formula: d = √[(x₂ - x₁)² + (y₂ - y₁)²]', 20, 30);
+                doc.text('Circle Area: A = πr²', 20, 40);
+                doc.text('Triangle Area: A = (1/2)|x₁(y₂ - y₃) + x₂(y₃ - y₁) + x₃(y₁ - y₂)|', 20, 50);
+                
+                // Add more pages and content as needed
+                
+                // Save the PDF
+                doc.save('coordinate-geometry-system-documentation.pdf');
+                
+                // Reset button
+                this.innerHTML = '<i class="fas fa-file-pdf me-2"></i> Export to PDF';
+                this.disabled = false;
+            }, 100);
+        });
+    </script>
+</body>
+</html>

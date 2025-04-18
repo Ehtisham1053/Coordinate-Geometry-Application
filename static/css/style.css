@@ -1,0 +1,177 @@
+/* Main Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+}
+
+.card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    border: none;
+}
+
+.card-header {
+    border-radius: 8px 8px 0 0 !important;
+}
+
+/* Form Styles */
+.form-control, .form-select {
+    border-radius: 6px;
+    border: 1px solid #ced4da;
+    padding: 10px;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Button Styles */
+.btn {
+    border-radius: 6px;
+    padding: 8px 16px;
+    margin-right: 8px;
+    font-weight: 500;
+}
+
+.btn-primary {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+.btn-primary:hover {
+    background-color: #0b5ed7;
+    border-color: #0a58ca;
+}
+
+/* Graph Container */
+#graphContainer {
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #fff;
+}
+
+/* Point Input Group */
+.point-input-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.point-input-group label {
+    margin-right: 10px;
+    min-width: 30px;
+}
+
+.point-input-group input {
+    width: 80px;
+    margin-right: 10px;
+}
+
+/* Learn Mode */
+#formulaExplanation {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 4px solid #17a2b8;
+}
+
+#formulaContent {
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 10px;
+    }
+    
+    .card {
+        margin-bottom: 20px;
+    }
+    
+    #graphContainer {
+        height: 350px !important;
+    }
+}
+
+/* Animation for results */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+#resultText {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Polygon point list */
+.polygon-points-list {
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.polygon-point-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.polygon-point-item:last-child {
+    border-bottom: none;
+}
+
+.remove-point-btn {
+    color: #dc3545;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+}
+
+/* Error styling */
+.error-message {
+    color: #dc3545;
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
+/* Formula styling */
+.formula {
+    font-family: 'Cambria Math', Georgia, serif;
+    background-color: #f8f9fa;
+    padding: 10px;
+    border-radius: 4px;
+    margin: 10px 0;
+    display: inline-block;
+}
+
+/* Table styling */
+.result-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+}
+
+.result-table th, .result-table td {
+    border: 1px solid #dee2e6;
+    padding: 8px 12px;
+    text-align: left;
+}
+
+.result-table th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+}
+
+.result-table tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
