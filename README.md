@@ -2,7 +2,8 @@
 
 A comprehensive web-based application for performing coordinate geometry operations with interactive visualization. This system combines a Python backend with a responsive frontend to create a powerful tool for geometric calculations and learning.
 
-![Coordinate Geometry System](https://placeholder.svg?height=300&width=600&text=Coordinate+Geometry+System)
+![App Preview](images/Geoemetry1.PNG)
+
 
 ## Features
 
